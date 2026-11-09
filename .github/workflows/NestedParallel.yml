@@ -29,7 +29,7 @@ jobs:
           instance-url: '${{ secrets.SN_INSTANCE_URL }}'
           tool-id: '${{ secrets.SN_ORCHESTRATION_TOOL_ID }}'
           context-github: '${{ toJSON(github) }}'
-          job-name: ServiceNow DevOps Change
+          job-name: ServiceNow DevOps 
           change-request: >-
             {"setCloseCode":"true","attributes":{"short_description":"Automated
             Software Deployment","description":"Automated Software
