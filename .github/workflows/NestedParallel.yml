@@ -1,5 +1,6 @@
 name: NestedParallel
 on:
+  workflow_dispatch:
   workflow_call:
     inputs:
       job-name-input:
