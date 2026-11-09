@@ -1,21 +1,26 @@
-name: NestedParallel
+name: Pipeline
+
 on:
   workflow_dispatch:
-  workflow_call:
-    inputs:
-      job-name-input:
-        type: string
-        required: true
 
-deploy:
+jobs:
+  registerPackage:
+    name: Register Package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo 'Registering package...'
+
+  deploy:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Run deployment scripts
         run: echo 'Deployment step in progress...'
+
   ServiceNowDevOpsChange:
-    runs-on: ubuntu-latest
     name: ServiceNow DevOps Change
+    runs-on: ubuntu-latest
     steps:
       - name: ServiceNow Change
         uses: ServiceNow/servicenow-devops-change@main
