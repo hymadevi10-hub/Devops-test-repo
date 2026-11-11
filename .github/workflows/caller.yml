@@ -1,0 +1,8 @@
+name: caller
+on:
+  workflow_dispatch:
+
+jobs:
+  parent2:
+    uses: ./.github/workflows/called.yml
+    secrets: inherit
