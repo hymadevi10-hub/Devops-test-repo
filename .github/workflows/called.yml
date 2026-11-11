@@ -1,0 +1,18 @@
+name: called
+on:
+  workflow_call:
+
+jobs:
+  child:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Change
+        uses: ServiceNow/servicenow-devops-change@v6.1.0
+        with:
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          context-github: ${{ toJSON(github) }}
+          job-name: 'child'   # fails: GitHub names this job "parent2 / child"
+          change-request: '{"setCloseCode":"true","attributes":{"short_description":"called_child_only repro"}}'
